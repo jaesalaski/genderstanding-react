@@ -2,25 +2,15 @@ import React from 'react';
 import Main from './components/Main.jsx'
 
 export default function Login(props) {
-  return(
+    return(
     <Main>
-        <div class="hero min-h-fit bg-base-200">
-            <div class="hero-content flex-col lg:flex-row">
-            <div class="text-center lg:text-left">
-                <h1 class="text-5xl font-bold text-primary">Close the <span class="text-secondary">Understanding Gap</span></h1>
+        <div className="hero min-h-fit bg-base-200">
+            <div className="hero-content flex-col lg:flex-row">
+            <div className="text-center lg:text-left">
+                <h1 className="text-5xl font-bold text-primary">Close the <span className="text-secondary">Understanding Gap</span></h1>
             </div>
-            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                <section class="col-6 mt-5">
-                {/* <% if(locals.messages.errors) { %>
-                    <% messages.errors.forEach(el => { %>
-                    <div class="alert alert-danger"><%= el.msg %></div>
-                    <% }) %> 
-                <% } %> 
-                <% if(locals.messages.info) { %> 
-                    <% messages.info.forEach( el => { %>
-                    <div class="alert alert-info"><%= el.msg %></div>
-                    <% }) %> 
-                <% } %> */}
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <section className="col-6 mt-5">
                     {props.messages.errors 
                         ? props.messages.errors.map(el => 
                             <div className="alert alert-danger">{el.msg}</div>
@@ -33,44 +23,40 @@ export default function Login(props) {
                         ) 
                     : null
                     }
-                    
-
-
-
-                <div class="card-body">
-                <div class="form-control">
-                    {/* <form action="/login" method="POST">
-                    <label class="label">
-                        <span class="label-text">Email</span>
+                <form action="/login" method="POST">
+                <div className="card-body form-control">
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text">Email</span>
                     </label>
                     <input 
                     type="email"  
-                    class="input input-bordered min-w-full" 
+                    className="input input-bordered min-w-full" 
                     placeholder="email" 
                     id="email" 
                     name="email" 
                     />
                 </div>
-                <div class="form-control">
-                    <label class="label">
-                    <span class="label-text">Password</span>
+                <div className="form-control">
+                    <label className="label">
+                    <span className="label-text">Password</span>
                     </label>
                     <input 
                     type="password"
-                    class="input input-bordered min-w-full"
+                    className="input input-bordered min-w-full"
                     placeholder="password" 
                     id="password"
                     name="password" 
                     />
-                    <label class="label">
-                    <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+                    <label className="label">
+                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                     </label>
                 </div>
-                <div class="form-control">
-                    <button type="submit" class="btn btn-primary min-w-full mt-2">Login</button>
-                </form> */}
-                </div>
-                </div>
+                <div className="form-control">
+                    <button type="submit" className="btn btn-primary min-w-full mt-2">Login</button>
+                    </div>
+                    </div>
+                </form>
                 </section>
             </div>
             </div>
