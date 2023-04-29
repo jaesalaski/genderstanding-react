@@ -1,0 +1,82 @@
+import React from 'react';
+import Main from './components/Main.jsx'
+
+export default function Login(props) {
+  return(
+    <Main>
+        <div class="hero min-h-fit bg-base-200">
+            <div class="hero-content flex-col lg:flex-row">
+            <div class="text-center lg:text-left">
+                <h1 class="text-5xl font-bold text-primary">Close the <span class="text-secondary">Understanding Gap</span></h1>
+            </div>
+            <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <section class="col-6 mt-5">
+                {/* <% if(locals.messages.errors) { %>
+                    <% messages.errors.forEach(el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                    <% }) %> 
+                <% } %> 
+                <% if(locals.messages.info) { %> 
+                    <% messages.info.forEach( el => { %>
+                    <div class="alert alert-info"><%= el.msg %></div>
+                    <% }) %> 
+                <% } %> */}
+                    {props.messages.errors 
+                        ? props.messages.errors.map(el => 
+                            <div className="alert alert-danger">{el.msg}</div>
+                        ) 
+                    : null
+                    }
+                    {props.messages.info 
+                        ? props.messages.info.map(el => 
+                            <div className="alert alert-danger">{el.msg}</div>
+                        ) 
+                    : null
+                    }
+                    
+
+
+
+                <div class="card-body">
+                <div class="form-control">
+                    {/* <form action="/login" method="POST">
+                    <label class="label">
+                        <span class="label-text">Email</span>
+                    </label>
+                    <input 
+                    type="email"  
+                    class="input input-bordered min-w-full" 
+                    placeholder="email" 
+                    id="email" 
+                    name="email" 
+                    />
+                </div>
+                <div class="form-control">
+                    <label class="label">
+                    <span class="label-text">Password</span>
+                    </label>
+                    <input 
+                    type="password"
+                    class="input input-bordered min-w-full"
+                    placeholder="password" 
+                    id="password"
+                    name="password" 
+                    />
+                    <label class="label">
+                    <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <button type="submit" class="btn btn-primary min-w-full mt-2">Login</button>
+                </form> */}
+                </div>
+                </div>
+                </section>
+            </div>
+            </div>
+        </div>
+    </Main>
+  )
+}
+
+
