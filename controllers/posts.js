@@ -13,7 +13,7 @@ module.exports = {
       } 
       await Post.create(postData);
       console.log("Post has been added!");
-      res.redirect("/profile");
+      res.redirect("/feed");
     } catch (err) {
       console.log(err);
       }
@@ -42,11 +42,13 @@ module.exports = {
       let post = await Post.findById({ _id: req.params.id });
       await Post.deleteOne({ _id: req.params.id });
       console.log("Deleted Post");
-      res.redirect("/profile");
+      res.redirect("/feed");
     } catch (err) {
-      res.redirect("/profile");
+      res.redirect("/feed");
       }
   },
+
+  //getFeed:
 
   getProfile: async (req, res) => {
     try {

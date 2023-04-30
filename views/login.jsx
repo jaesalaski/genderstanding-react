@@ -12,14 +12,14 @@ export default function Login(props) {
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <section className="col-6 mt-5">
                     {props.messages.errors 
-                        ? props.messages.errors.map(el => 
-                            <div className="alert alert-danger">{el.msg}</div>
+                        ? props.messages.errors.map(el, id => 
+                            <div key={id} className="alert alert-danger">{el.msg}</div>
                         ) 
                     : null
                     }
                     {props.messages.info 
-                        ? props.messages.info.map(el => 
-                            <div className="alert alert-danger">{el.msg}</div>
+                        ? props.messages.info.map(el, id => 
+                            <div key={id} className="alert alert-danger">{el.msg}</div>
                         ) 
                     : null
                     }

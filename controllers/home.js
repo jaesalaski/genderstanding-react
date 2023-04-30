@@ -12,6 +12,10 @@ module.exports = {
     res.render("faq");
   },
 
+  getFeed: (req, res) => {
+    res.render("feed");
+  },
+
   getContact: (req, res) => {
     res.render("contact");
   },
