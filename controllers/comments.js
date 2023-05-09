@@ -11,7 +11,7 @@ module.exports = {
         user: req.user.id,
       });
       console.log("Comment has been added!");
-      res.redirect("/profile");
+      res.redirect("/feed");
     } catch (err) {
       console.log(err);
     }
@@ -30,10 +30,10 @@ module.exports = {
         }
       await comment.save();
       console.log("Comment Updated");
-      res.redirect(`/profile`);
+      res.redirect(`/feed`)
     } catch (err) {
       console.log(err);
-      res.redirect("/profile");
+      res.redirect("/feed");
       }
   },
 
@@ -41,10 +41,9 @@ module.exports = {
     try {
       await Comment.deleteOne({ _id: req.params.id });
       console.log("Deleted Comment");
-      res.redirect("/profile");
+      res.redirect("/feed");
     } catch (err) {
-      res.redirect("/profile");
+      res.redirect("/feed");
       }
   }
-  
 }

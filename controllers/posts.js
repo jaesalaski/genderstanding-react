@@ -48,8 +48,6 @@ module.exports = {
       }
   },
 
-  //getFeed:
-
   getProfile: async (req, res) => {
     try {
       const comments = await Comment.find({ comments: req.params.comment });
@@ -74,6 +72,22 @@ module.exports = {
         post: post, 
         user: req.user, 
         comments: comments 
+      });
+    } catch (err) {
+      console.log(err);
+      }
+  },
+
+  getProfile: async (req, res) => {
+    try {
+      const comments = await Comment.find({ comments: req.params.comment });
+      const posts = await Post.find()
+        .sort({ createdAt: "desc" })
+        .lean();
+      res.render("feed", { 
+        posts: posts,
+        user: req.user,
+        comments: comments
       });
     } catch (err) {
       console.log(err);
