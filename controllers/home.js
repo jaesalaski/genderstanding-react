@@ -1,7 +1,7 @@
 module.exports = {
 
   getIndex: (req, res) => {
-    res.render("index");
+    res.render("../frontend/src/routes/Index.jsx");
   },
 
   getAbout: (req, res) => {
