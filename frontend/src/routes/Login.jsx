@@ -2,7 +2,27 @@ import { useOutletContext } from "react-router-dom";
 
 export default function Login() {
     const { user, setUser, setMessages } = useOutletContext();
-    console.log(user, setUser, setMessages);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const form = event.currentTarget;
+        const response = await fetch(form.action, {
+            method: form.method,
+            headers: {
+                "Content-Type": "applications/www-form-urlencoded",
+            },
+            body: new URLSearchParams(new FormData(form)),
+        });
+        const json = await response.json();
+            { user: {}, messages: {} }
+        if(json.messages){
+            setMessages(json.messages);
+        }if(json.user){
+            setUser(json.user);
+        }
+    }
+
+
     return (
         <main className="hero min-h-fit bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
@@ -14,7 +34,7 @@ export default function Login() {
                         <form action="/login" method="POST">
                             <div className="card-body form-control">
                                 <div className="form-control">
-                                    <label className="label">
+                                    <label htmlFor="exampleInputEmail" className="label">
                                         <span className="label-text">Email</span>
                                     </label>
                                     <input
@@ -26,7 +46,7 @@ export default function Login() {
                                     />
                                 </div>
                                 <div className="form-control">
-                                    <label className="label">
+                                    <label htmlFor="exampleInputPassword" className="label">
                                         <span className="label-text">Password</span>
                                     </label>
                                     <input
@@ -36,9 +56,9 @@ export default function Login() {
                                         id="password"
                                         name="password"
                                     />
-                                    {/* <label className="label">
-                                        <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                    </label> */}
+                                    <label className="label">
+                                        <a href="brokenLink" className="label-text-alt link link-hover">Forgot password?</a>
+                                    </label>
                                 </div>
                                 <div className="form-control">
                                     <button type="submit" className="btn btn-primary min-w-full mt-2">Login</button>
