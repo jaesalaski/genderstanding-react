@@ -1,4 +1,8 @@
-export default function Login(props) {
+import { useOutletContext } from "react-router-dom";
+
+export default function Login() {
+    const { user, setUser, setMessages } = useOutletContext();
+    console.log(user, setUser, setMessages);
     return (
         <main className="hero min-h-fit bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
@@ -7,18 +11,6 @@ export default function Login(props) {
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <section className="col-6 mt-5">
-                        {/* {props.messages.errors
-                            ? props.messages.errors.map(el, id =>
-                                <div key={id} className="alert alert-danger">{el.msg}</div>
-                            )
-                            : null
-                        }
-                        {props.messages.info
-                            ? props.messages.info.map(el, id =>
-                                <div key={id} className="alert alert-danger">{el.msg}</div>
-                            )
-                            : null
-                        } */}
                         <form action="/login" method="POST">
                             <div className="card-body form-control">
                                 <div className="form-control">
@@ -44,9 +36,9 @@ export default function Login(props) {
                                         id="password"
                                         name="password"
                                     />
-                                    <label className="label">
+                                    {/* <label className="label">
                                         <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                    </label>
+                                    </label> */}
                                 </div>
                                 <div className="form-control">
                                     <button type="submit" className="btn btn-primary min-w-full mt-2">Login</button>
