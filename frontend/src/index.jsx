@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import "./style.css";
-import "./tailwind.config";
+import "./tailwind.config.js";
 import Root from "./routes/Root";
 import ErrorPage from "./routes/ErrorPage";
 import Login from "./routes/Login";
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <Login />,
+        element: <Login  />,
       },
       {
         path: "signup",

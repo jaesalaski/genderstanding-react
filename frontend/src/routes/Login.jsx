@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 
 export default function Login() {
-    const { user, setUser, setMessages } = useOutletContext();
+    const { setUser, setMessages } = useOutletContext();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -9,19 +9,14 @@ export default function Login() {
         const response = await fetch(form.action, {
             method: form.method,
             headers: {
-                "Content-Type": "applications/www-form-urlencoded",
+                "Content-Type": "application/x-www-form-urlencoded",
             },
             body: new URLSearchParams(new FormData(form)),
         });
         const json = await response.json();
-            { user: {}, messages: {} }
-        if(json.messages){
-            setMessages(json.messages);
-        }if(json.user){
-            setUser(json.user);
-        }
+        if (json.messages) setMessages(json.messages);
+        if (json.user) setUser(json.user);
     }
-
 
     return (
         <main className="hero min-h-fit bg-base-200">
@@ -31,7 +26,7 @@ export default function Login() {
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <section className="col-6 mt-5">
-                        <form action="/login" method="POST">
+                        <form action="/profile" method="GET" onSubmit={handleSubmit}>
                             <div className="card-body form-control">
                                 <div className="form-control">
                                     <label htmlFor="exampleInputEmail" className="label">

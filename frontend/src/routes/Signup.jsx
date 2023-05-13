@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 
 export default function Signup() {
-    const { user, setUser, setMessages } = useOutletContext();
+    const { setUser, setMessages } = useOutletContext();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -14,13 +14,9 @@ export default function Signup() {
             body: new URLSearchParams(new FormData(form)),
         });
         const json = await response.json();
-        if(json.error){
-            setMessages(json);
-        }else {
-            setUser(json);
-        }
+        if (json.messages) setMessages(json.messages);
+        if (json.user) setUser(json.user);
     }
-
 
     return (
     <main>

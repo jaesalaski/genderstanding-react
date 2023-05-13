@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Feed(props) {
+export default function Feed() {
   return (
     <h1>Feed</h1>
     //   {props.posts.map(post =>
