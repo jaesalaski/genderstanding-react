@@ -3,20 +3,26 @@ import { Link, Outlet } from "react-router-dom";
 import Messages from "../components/Messages";
 
 export default function Root() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
     const [messages, setMessages] = useState({});
+
+    useEffect(() => {
+        fetch('/user')
+            .then(res => res.json())
+            .then((res) => setUser(res.user));
+    }, []);
 
     return (
         <>
             <header>
                 <div className="navbar bg-base-100">
                     <div className="flex-1">
-                        <Link to ="/" className="btn btn-ghost normal-case text-xl text-secondary" >Genderstanding</Link>
+                        <Link to ={user ? '/profile' : '/'} className="btn btn-ghost normal-case text-xl text-secondary" >Genderstanding</Link>
                     </div>
                     <div className="flex-none">
                         <ul className="menu menu-horizontal p-0">
-                            {/* <li><a href="/about">About</a></li>
-                            <li><a href="mailto:jae@salaski.net">Contact</a></li> */}
+                            <li><Link to="/about">About</Link></li>
+                            {/* <li><a href="mailto:jae@salaski.net">Contact</a></li> */}
                         </ul>
                     </div>
                     <div className="dropdown dropdown-end">

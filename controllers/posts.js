@@ -10,7 +10,7 @@ module.exports = {
         caption: req.body.caption,
         likes: 0,
         user: req.user.id,
-      } 
+      }
       await Post.create(postData);
       console.log("Post has been added!");
       res.redirect("/feed");
@@ -30,7 +30,7 @@ module.exports = {
         post.likedBy.push(req.user.id);
         post.likes++;
         }
-        await post.save();   
+        await post.save();
       res.redirect(`/profile`);
     } catch (err) {
       console.log(err);
@@ -54,7 +54,7 @@ module.exports = {
       const posts = await Post.find()
         .sort({ createdAt: "desc" })
         .lean();
-      res.render("profile", { 
+      res.render("profile", {
         posts: posts,
         user: req.user,
         comments: comments
@@ -68,10 +68,10 @@ module.exports = {
     try {
       const post = await Post.findById(req.params.id);
       const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
-      res.render("post", { 
-        post: post, 
-        user: req.user, 
-        comments: comments 
+      res.render("post", {
+        post: post,
+        user: req.user,
+        comments: comments
       });
     } catch (err) {
       console.log(err);
@@ -84,7 +84,7 @@ module.exports = {
       const posts = await Post.find()
         .sort({ createdAt: "desc" })
         .lean();
-      res.render("feed", { 
+      res.render("feed", {
         posts: posts,
         user: req.user,
         comments: comments

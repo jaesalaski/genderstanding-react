@@ -6,6 +6,7 @@ const postsController = require("../controllers/posts");
 const { ensureAuth } = require("../middleware/auth");
 
 router.get("/", homeController.getIndex);
+router.get("/user", authController.getUser);
 router.get("/about", homeController.getAbout);
 router.get("/contact", homeController.getContact);
 router.get("/profile", ensureAuth, postsController.getProfile);
@@ -13,7 +14,7 @@ router.get("/feed", ensureAuth, homeController.getFeed);
 router.get("/login", authController.getLogin);
 router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);
-router.get("/signup", authController.getSignup);
+// router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
 
 module.exports = router;

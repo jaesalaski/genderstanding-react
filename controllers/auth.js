@@ -2,13 +2,8 @@ const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
 
-exports.getLogin = (req, res) => {
-  if (req.user) {
-    return res.redirect("/profile");
-  }
-  res.render("login", {
-    title: "Login",
-  });
+exports.getUser = (req, res) => {
+  res.json({ user: req.user || null });
 };
 
 exports.postLogin = (req, res, next) => {
@@ -39,7 +34,7 @@ exports.postLogin = (req, res, next) => {
         return next(err);
       }
       req.flash("success", { msg: "Success! You are logged in." });
-      res.json({ user, messages: req.flash() });
+      res.json({ user: user, messages: req.flash() });
     });
   })(req, res, next);
 };
@@ -56,15 +51,6 @@ exports.logout = (req, res) => {
   });
 };
 
-exports.getSignup = (req, res) => {
-  if (req.user) {
-    return res.redirect("/profile");
-  }
-  res.render("signup", {
-    title: "Create Account",
-  });
-};
-
 exports.postSignup = (req, res, next) => {
   const validationErrors = [];
   if (!validator.isEmail(req.body.email))
@@ -78,7 +64,7 @@ exports.postSignup = (req, res, next) => {
 
   if (validationErrors.length) {
     req.flash("errors", validationErrors);
-    return res.redirect("../signup");
+    return res.json({ messages: req.flash() });
   }
   req.body.email = validator.normalizeEmail(req.body.email, {
     gmail_remove_dots: false,
@@ -100,7 +86,7 @@ exports.postSignup = (req, res, next) => {
         req.flash("errors", {
           msg: "Account with that email address or username already exists.",
         });
-        return res.redirect("../signup");
+        return res.json({ messages: req.flash() });
       }
       user.save((err) => {
         if (err) {
@@ -110,9 +96,15 @@ exports.postSignup = (req, res, next) => {
           if (err) {
             return next(err);
           }
-          res.redirect("/profile");
+          res.json({ user: user, messages: req.flash() });
         });
       });
     }
   );
 };
+
+// exports.getLogin = (req, res) => {
+// if(req.user) {
+//   return res.redirect('/feed')
+//   };
+// };

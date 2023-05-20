@@ -26,7 +26,7 @@ export default function Login() {
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <section className="col-6 mt-5">
-                        <form action="/profile" method="GET" onSubmit={handleSubmit}>
+                        <form action="/profile" method="POST" onSubmit={handleSubmit}>
                             <div className="card-body form-control">
                                 <div className="form-control">
                                     <label htmlFor="exampleInputEmail" className="label">
