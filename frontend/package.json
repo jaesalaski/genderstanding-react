@@ -40,6 +40,10 @@
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2"
+<<<<<<< HEAD
   },
   "proxy": "http://localhost:2121"
+=======
+  }
+>>>>>>> 5932c7f3b96f0d1ca9d98a022ea53ce1a5924707
 }
