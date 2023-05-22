@@ -1,21 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
   RouterProvider,
+  Route,
+  Link,
 } from "react-router-dom";
-import "./style.css";
-import "./tailwind.config.js";
-import Root from "./routes/Root";
-import ErrorPage from "./routes/ErrorPage";
-import Login from "./routes/Login";
-import Signup from "./routes/Signup";
-import Index from "./routes/Index";
-import Profile from "./routes/Profile";
-import About from "./routes/About";
-import Feed from "./routes/Feed";
-
-// import App from './App';
+import './style.css';
+import App from './App';
+import Root from './routes/Root';
+import ErrorPage from './routes/ErrorPage';
+import Login from './routes/Login';
+import Signup from './routes/Signup';
+import Index from './routes/Index';
+import { Profile } from './routes/Profile';
+import Logout from './routes/Logout';
+import Feed from './routes/Feed';
+import Post from './routes/Post';
 
 const router = createBrowserRouter([
   {
@@ -25,28 +26,32 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Index />,
+        element: <Index />
       },
       {
-        path: "login",
+        path: "/login",
         element: <Login />,
       },
       {
-        path: "signup",
+        path: "/logout",
+        element: <Logout />,
+      },
+      {
+        path: "/signup",
         element: <Signup />,
       },
       {
-        path: "profile",
+        path: "/profile",
         element: <Profile />,
       },
       {
-        path: "about",
-        element: <About />,
+        path: "/feed",
+        element: <Feed />,
       },
       {
-        path: "feed",
-        element: <Feed />,
-      }
+        path: "/post/:id",
+        element: <Post />,
+      },
     ]
   },
 ]);

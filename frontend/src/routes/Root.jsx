@@ -39,6 +39,9 @@ export default function Root() {
                     </div>
                 </div>
             </header>
+            {/* Check to see if logged in / functionality */}
+            <p>Hi {user?.userName}</p>
+
             <Messages messages={messages} />
             <Outlet context={{user, setUser, messages, setMessages}}/>
         </>
