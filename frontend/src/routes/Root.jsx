@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Messages from "../components/Messages";
 
@@ -7,7 +7,7 @@ export default function Root() {
     const [messages, setMessages] = useState({});
 
     useEffect(() => {
-        fetch('/user')
+        fetch('api/user')
             .then(res => res.json())
             .then((res) => setUser(res.user));
     }, []);
