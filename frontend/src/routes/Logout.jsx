@@ -9,7 +9,8 @@ export default function Logout() {
     useEffect(() => {
         fetch("/api/logout")
         .then((res) => res.json())
-        .then((data) => setUser(null));
+        .then(() => {
+            setUser(null);
         });
     }, [setUser]);
 
