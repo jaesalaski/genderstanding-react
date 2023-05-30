@@ -1,16 +1,17 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { useEffect } from "react";
 import React from 'react';
 
 export default function Logout() {
     const { setUser } = useOutletContext();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
-        fetch("/api/logout")
-        .then((res) => res.json())
+        fetch("/logout")
         .then(() => {
             setUser(null);
+            navigate("/");
         });
     }, [setUser]);
 
