@@ -1,8 +1,9 @@
 import React from 'react'
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 export default function Login() {
     const { setUser, setMessages } = useOutletContext();
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -16,7 +17,9 @@ export default function Login() {
         });
         const json = await response.json();
         if (json.messages) setMessages(json.messages);
-        if (json.user) setUser(json.user);
+        if (json.user) {
+            setUser(json.user);
+            navigate("/profile");
     }
 
     return (

@@ -9,9 +9,9 @@ export function Profile() {
 	const [posts, setPosts] = useState([]);
 
 	useEffect(() => {
-		fetch(API_BASE + "/api/profile", { credentials: "include" })
-			.then((res) => res.json())
-			.then((data) => setPosts(data));
+		fetch("/api/profile")
+		.then((res) => res.json())
+		.then((data) => setPosts(data));
 	}, []);
 
 	if (!user) return null;
