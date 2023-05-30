@@ -2,7 +2,7 @@ import React from 'react';
 import PostPreview from './PostPreview';
 
 const PostList = ({ posts }) => <ul className="row list-unstyled">
-    {posts.map((post) => <PostPreview key={post.id} post={post} />)}
+    {posts.map((post) => <PostPreview key={post.id} {...post} />)}
     </ul>
 
 export default PostList;
