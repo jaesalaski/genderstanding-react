@@ -16,7 +16,7 @@ export default function Logout() {
     }, [setUser]);
 
     return (
-        <main className="container">
+    <main className="container">
         <div className="row justify-content-around mt-5">
             <p>Logging out...</p>
         </div>

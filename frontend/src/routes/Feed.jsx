@@ -6,13 +6,14 @@ export default function Feed() {
   const [posts, setPosts] = useState([]);
 
 	useEffect(() => {
-		fetch("/api/profile")
+		fetch("/api/feed")
 		.then((res) => res.json())
 		.then((data) => setPosts(data));
 	}, []);
 
   return (
     <div className="container">
+      <h2>Feed</h2>
       <div className="row justify-content-center mt-5">
         <PostList posts={posts} />
       </div>
